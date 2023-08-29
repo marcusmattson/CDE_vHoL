@@ -1,6 +1,6 @@
-# CDE Hands-on-Lab CEMEA
+# CDE Hands-on-Lab
 
-- [CDE Hands-on-Lab CEMEA](#cde-hands-on-lab-cemea)
+- [CDE Hands-on-Lab](#cde-hands-on-lab)
   - [Objective](#objective)
   - [Prerequisites](#prerequisites)
 - [Step by Step Instructions](#step-by-step-instructions)
