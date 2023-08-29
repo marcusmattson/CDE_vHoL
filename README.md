@@ -8,8 +8,8 @@
   - [Lab 1: Manage Spark Jobs with CDE](#lab-1-manage-spark-jobs-with-cde)
   - [Lab 2: Orchestrate Data Pipelines with Airflow](#lab-2-orchestrate-data-pipelines-with-airflow)
   - [Lab 3: Explore Iceberg in Interactive Sessions](#lab-3-explore-iceberg-in-interactive-sessions)
-  - [Lab 4: Automate CDE Workflows with the CDE CLI](#lab-4-automate-cde-workflows-with-the-cde-cli)
-  - [Bonus Lab 1: Visualize Job \& Data Lineage in Atlas](#bonus-lab-1-visualize-job--data-lineage-in-atlas)
+  - [Lab 4: Visualize Job \& Data Lineage in Atlas](#lab-4-automate-cde-workflows-with-the-cde-cli)
+  - [Bonus Lab 1: Automate CDE Workflows with the CDE CLI](#bonus-lab-1-visualize-job--data-lineage-in-atlas)
 - [Next Steps](#next-steps)
 
 ## Objective
@@ -608,7 +608,24 @@ Expected output:
 There are 3336 unique records out of 3336 total records in the CAR_SALES table.
 ```
 
-## Lab 4: Automate CDE Workflows with the CDE CLI
+## Lab 4: Visualize Job & Data Lineage in Atlas
+
+#### Summary
+
+Cloudera tracks and connects lineage for all CDP workloads and datasets via Apache Atlas. In this lab you are going to explore the metadata for our previously created jobs and datasets.
+
+Navigate to the latest run of your "04_Motors_Enrich" Job and click on Lineage.
+
+![Alt text](img/atlas_0.png)
+
+In Atlas, navigate to the "Lineage" tab.
+
+![Alt text](img/atlas_1.png)
+
+The "04_Motors_Enrich" Job joined multiple tables together. Try to see if you can identify the raw data files and their respective AWS S3 buckets that were used to build this table.
+
+
+## Bonus Lab 1: Automate CDE Workflows with the CDE CLI
 
 #### Summary
 
@@ -618,7 +635,7 @@ In this part of the workshop you will gain familiarity with the CDE CLI by rerun
 
 You can use the CDE CLI or API to execute Spark and Airflow jobs remotely rather than via the CDE UI as shown up to this point. In general, the CDE CLI is recommended over the UI when running spark submits from a local machine. The API is instead recommended when integrating CDE Spark Jobs or Airflow Jobs (or both) with 3rd party orchestration systems. For example you can use GitLab CI to build CDE Pipelines across multiple Virtual Clusters. For a detailed example, please reference [GitLab2CDE](https://github.com/pdefusco/Gitlab2CDE).
 
-#### 4.1 Install and Configure the CDE CLI
+#### Bonus 1.1 - Install and Configure the CDE CLI
 
 You can download the CDE CLI to your local machine following the instructions provided in the [official documentation](https://docs.cloudera.com/data-engineering/cloud/cli-access/topics/cde-cli.html).
 
@@ -712,7 +729,7 @@ API User Password:
 alias cde_user123 = "./cde --user <your-username> --vcluster-endpoint <your-jobs-api-url> --skip-credentials-file"
 ```
 
-#### 4.2 Run an Application using the CDE CLI
+#### Bonus 1.2 - Run an Application using the CDE CLI
 
 Similar to the well known `spark-submit` command, you may use the `cde spark submit` approach to directly running the "01_pyspark-sql.py" application.
 
@@ -790,25 +807,9 @@ To learn about the difference between `cde spark submit` and cde job refer to th
 >
 > Using the cde job run requires more preparation on the target environment compared to the cde spark submit command. Whereas cde spark submit is a quick and efficient way of testing a Spark job during development, cde job run is suited for production environments where a job is to be run multiple times, therefore removing resources and job definitions after every job run is neither necessary, nor viable.
 
-## Bonus Lab 1: Visualize Job & Data Lineage in Atlas
-
-#### Summary
-
-Cloudera tracks and connects lineage for all CDP workloads and datasets via Apache Atlas. In this lab you are going to explore the metadata for our previously created jobs and datasets.
-
-Navigate to the latest run of your "04_Motors_Enrich" Job and click on Lineage.
-
-![Alt text](img/atlas_0.png)
-
-In Atlas, navigate to the "Lineage" tab.
-
-![Alt text](img/atlas_1.png)
-
-The "04_Motors_Enrich" Job joined multiple tables together. Try to see if you can identify the raw data files and their respective AWS S3 buckets that were used to build this table.
-
 # Next Steps
 
-CDE is the Cloudera Data Engineering Service, a containerized managed service for Spark and Airflow.
+CDE is the Cloudera Data Engineering Service, a containerized Spark ecosystem.
 
 If you are exploring CDE you may find the following tutorials relevant:
 
